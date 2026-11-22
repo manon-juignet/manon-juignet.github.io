@@ -73,7 +73,7 @@ const kind = (k) => KINDS[k] ?? KINDS.experience
 
     <!-- CV -->
     <section class="mt-16">
-      <div class="card flex flex-col items-start gap-4 bg-peach/20 p-6 sm:flex-row sm:items-center sm:justify-between md:p-8">
+      <div class="card flex flex-col items-start gap-4 border-pro bg-pro p-6 sm:flex-row sm:items-center sm:justify-between md:p-8">
         <div>
           <h2 class="text-2xl font-semibold">Mon CV</h2>
           <p class="mt-1 text-muted">Toutes ces informations sur une page, en PDF.</p>

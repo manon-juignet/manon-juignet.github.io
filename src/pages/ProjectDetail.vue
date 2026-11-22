@@ -73,7 +73,7 @@ const details = computed(() => project.value?.details ?? {})
     <!-- Gros chiffres -->
     <section v-if="details.stats?.length" class="container-site mt-12" aria-label="Chiffres clés">
       <dl class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div v-for="s in details.stats" :key="s.label" class="card flex flex-col-reverse gap-1 bg-peach/20 p-6">
+        <div v-for="s in details.stats" :key="s.label" class="card flex flex-col-reverse gap-1 border-pro bg-pro p-6">
           <dt class="text-muted">{{ s.label }}</dt>
           <dd class="font-display text-4xl font-semibold text-title">{{ s.value }}</dd>
         </div>
@@ -82,9 +82,9 @@ const details = computed(() => project.value?.details ?? {})
 
     <!-- Ce que j'en retiens -->
     <section v-if="details.lesson" class="container-site mt-12">
-      <div class="relative overflow-hidden rounded-3xl bg-sage/30 p-8 md:p-10">
+      <div class="relative overflow-hidden rounded-3xl bg-perso p-8 md:p-10">
         <div aria-hidden="true" class="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-sage/50"></div>
-        <h2 class="eyebrow relative font-sans">Ce que j’en retiens</h2>
+        <h2 class="eyebrow relative font-sans text-tag-ink">Ce que j’en retiens</h2>
         <p class="relative mt-3 max-w-3xl font-display text-2xl leading-snug text-title">{{ details.lesson }}</p>
       </div>
     </section>
