@@ -4,8 +4,8 @@
 // Manon n'a donc rien de spécial à taper dans les fichiers de données.
 const NBSP = ' '
 
-// Unités courantes : « 24 V », « 6,7 kWh », « 5 163,40 € » restent sur une ligne
-const UNITS = '(?:kWh|Wh|kW|W|kVA|VA|kV|V|mA|A|ms|s|min|h|°C|€|%)'
+// Unités courantes : « 24 V », « 6,7 kWh », « 5 163,40 € », « 3 ans » restent sur une ligne
+const UNITS = '(?:kWh|Wh|kW|W|kVA|VA|kV|V|mA|A|ms|s|min|h|°C|€|%|ans|an|mois|jours)'
 
 export function fr(text) {
   if (typeof text !== 'string') return text

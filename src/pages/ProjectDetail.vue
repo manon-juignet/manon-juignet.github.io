@@ -24,6 +24,11 @@ const details = computed(() => project.value?.details ?? {})
 
       <div class="mt-6 flex flex-wrap items-center gap-2 text-sm text-muted">
         <TypeBadge :type="project.type" />
+        <span
+          v-if="project.upcoming"
+          class="inline-flex items-center rounded-full border border-line px-3 py-0.5 text-xs font-bold text-title"
+          >À venir</span
+        >
         <span>{{ project.context }}</span>
       </div>
       <h1 class="mt-3 max-w-3xl text-4xl font-semibold sm:text-5xl">{{ project.title }}</h1>

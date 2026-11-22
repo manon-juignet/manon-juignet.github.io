@@ -40,7 +40,7 @@ const accents = ['bg-peach/45', 'bg-sage/45', 'bg-primary/15']
             <span class="font-bold text-muted">{{ item.period }}</span>
           </div>
           <h2 class="mt-3 text-2xl font-semibold">{{ item.title }}</h2>
-          <p class="text-muted">{{ item.place }}</p>
+          <p v-if="item.place" class="text-muted">{{ item.place }}</p>
           <p v-if="item.description" class="text-justify-md mt-3">{{ item.description }}</p>
           <ul v-if="item.points?.length" class="mt-3 space-y-1.5">
             <li v-for="pt in item.points" :key="pt" class="flex gap-2">
@@ -57,6 +57,20 @@ const accents = ['bg-peach/45', 'bg-sage/45', 'bg-primary/15']
       <p class="eyebrow">{{ alternance.place }}</p>
       <h2 id="alternance-titre" class="mt-1 text-3xl font-semibold sm:text-4xl">{{ alternance.title }}</h2>
       <p v-if="alternance.intro" class="mt-3 text-lg">{{ alternance.intro }}</p>
+
+      <figure v-if="alternance.video?.src" class="mt-6 max-w-3xl overflow-hidden rounded-3xl border border-line bg-surface p-3">
+        <video
+          :src="asset(alternance.video.src)"
+          :poster="alternance.video.poster ? asset(alternance.video.poster) : undefined"
+          controls
+          preload="none"
+          playsinline
+          class="aspect-video w-full rounded-2xl bg-black"
+        >
+          Votre navigateur ne peut pas lire cette vidéo.
+        </video>
+        <figcaption v-if="alternance.video.title" class="px-2 pt-2 text-sm text-muted">{{ alternance.video.title }}</figcaption>
+      </figure>
 
       <ul class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         <li v-for="(m, i) in alternance.missions" :key="m.title" class="card relative overflow-hidden p-6">

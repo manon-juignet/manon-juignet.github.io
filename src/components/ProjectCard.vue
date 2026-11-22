@@ -19,6 +19,11 @@ defineProps({ project: { type: Object, required: true } })
     <div class="flex flex-1 flex-col gap-3 p-5">
       <div class="flex flex-wrap items-center gap-2 text-sm text-muted">
         <TypeBadge :type="project.type" />
+        <span
+          v-if="project.upcoming"
+          class="inline-flex items-center rounded-full border border-line px-3 py-0.5 text-xs font-bold text-title"
+          >À venir</span
+        >
         <span>{{ project.context }}</span>
       </div>
 

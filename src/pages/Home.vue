@@ -48,7 +48,7 @@ const { openContact } = useContact()
     <!-- En bref -->
     <section v-if="site.highlights?.length" class="container-site" aria-labelledby="en-bref">
       <h2 id="en-bref" class="sr-only">En bref</h2>
-      <ul class="grid gap-4 sm:grid-cols-3">
+      <ul class="grid gap-4" :class="site.highlights.length === 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : 'sm:grid-cols-3'">
         <li
           v-for="(h, i) in site.highlights"
           :key="h.label"
