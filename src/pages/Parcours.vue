@@ -1,5 +1,5 @@
 <script setup>
-import { site, timeline, skills } from '../content'
+import { site, timeline, alternance, competences, tools } from '../content'
 import { asset } from '../utils/typo'
 import AppIcon from '../components/AppIcon.vue'
 
@@ -8,6 +8,8 @@ const KINDS = {
   experience: { label: 'Expérience', icon: 'briefcase', dot: 'bg-peach text-pro-ink', badge: 'bg-pro text-pro-ink' },
 }
 const kind = (k) => KINDS[k] ?? KINDS.experience
+
+const accents = ['bg-peach/45', 'bg-sage/45', 'bg-primary/15']
 </script>
 
 <template>
@@ -50,19 +52,59 @@ const kind = (k) => KINDS[k] ?? KINDS.experience
       </li>
     </ol>
 
-    <!-- Compétences -->
-    <section class="mt-20" aria-labelledby="competences-titre">
+    <!-- Alternance : missions -->
+    <section v-if="alternance?.missions?.length" class="mt-20" aria-labelledby="alternance-titre">
+      <p class="eyebrow">{{ alternance.place }}</p>
+      <h2 id="alternance-titre" class="mt-1 text-3xl font-semibold sm:text-4xl">{{ alternance.title }}</h2>
+      <p v-if="alternance.intro" class="mt-3 text-lg">{{ alternance.intro }}</p>
+
+      <ul class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <li v-for="(m, i) in alternance.missions" :key="m.title" class="card relative overflow-hidden p-6">
+          <div
+            aria-hidden="true"
+            class="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full"
+            :class="accents[i % accents.length]"
+          ></div>
+          <h3 class="relative text-xl font-semibold">{{ m.title }}</h3>
+          <p class="text-justify-md relative mt-2">{{ m.body }}</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Compétences du BUT -->
+    <section v-if="competences.length" class="mt-20" aria-labelledby="competences-titre">
       <p class="eyebrow">Compétences</p>
-      <h2 id="competences-titre" class="mb-6 mt-1 text-3xl font-semibold sm:text-4xl">Ce que je sais faire</h2>
-      <div class="grid gap-5 md:grid-cols-3">
-        <div v-for="(group, i) in skills" :key="group.title" class="card relative overflow-hidden p-6">
+      <h2 id="competences-titre" class="mt-1 text-3xl font-semibold sm:text-4xl">Les 4 compétences du BUT GEII</h2>
+
+      <div class="mt-6 grid gap-5 sm:grid-cols-2">
+        <article v-for="(c, i) in competences" :key="c.name" class="card relative overflow-hidden p-6">
           <div
             aria-hidden="true"
             class="pointer-events-none absolute -right-6 -top-6 h-20 w-20 rounded-full"
-            :class="['bg-peach/40', 'bg-sage/40', 'bg-primary/10'][i % 3]"
+            :class="accents[i % accents.length]"
           ></div>
-          <h3 class="relative text-xl font-semibold">{{ group.title }}</h3>
-          <ul class="relative mt-4 flex flex-wrap gap-2">
+          <div class="relative flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="text-2xl font-semibold">{{ c.name }}</h3>
+            <span class="rounded-full bg-cours px-3 py-0.5 text-xs font-bold text-cours-ink">{{ c.level }}</span>
+          </div>
+          <p class="relative mt-1 text-muted">{{ c.title }}</p>
+          <ul class="relative mt-4 space-y-1.5">
+            <li v-for="it in c.items" :key="it" class="flex gap-2">
+              <AppIcon name="check" class="mt-1 text-tag-ink" />
+              <span>{{ it }}</span>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Outils -->
+    <section v-if="tools.length" class="mt-16" aria-labelledby="outils-titre">
+      <h2 id="outils-titre" class="text-2xl font-semibold sm:text-3xl">Outils et logiciels</h2>
+      <div class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div v-for="group in tools" :key="group.title" class="card p-5">
+          <h3 class="font-sans text-sm font-bold uppercase tracking-[0.1em] text-muted">{{ group.title }}</h3>
+          <ul class="mt-3 flex flex-wrap gap-2">
             <li v-for="s in group.items" :key="s" class="rounded-md bg-tag px-2.5 py-1 text-sm font-bold text-tag-ink">
               {{ s }}
             </li>

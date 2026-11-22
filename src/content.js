@@ -3,12 +3,14 @@
 import { frDeep } from './utils/typo'
 import siteData from './data/site'
 import projectsData from './data/projects'
-import { timeline as timelineData, skills as skillsData } from './data/parcours'
+import * as parcoursData from './data/parcours'
 
 export const site = frDeep(siteData)
 export const projects = frDeep(projectsData)
-export const timeline = frDeep(timelineData)
-export const skills = frDeep(skillsData)
+export const timeline = frDeep(parcoursData.timeline ?? [])
+export const alternance = frDeep(parcoursData.alternance ?? null)
+export const competences = frDeep(parcoursData.competences ?? [])
+export const tools = frDeep(parcoursData.tools ?? [])
 
 export const featuredProjects = projects
   .filter((p) => p.featured)
