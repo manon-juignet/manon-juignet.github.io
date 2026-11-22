@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   Couleurs du site, en « rôles » (valeurs R G B).
+   Pour changer une couleur partout : modifier uniquement cette liste.
+   Contrastes vérifiés (WCAG AA) sur le fond `page` et `surface`.
+   ------------------------------------------------------------------ */
+:root {
+  --c-page: 251 244 234;       /* #FBF4EA crème — fond de page */
+  --c-surface: 255 252 247;    /* #FFFCF7 blanc chaud — cartes */
+  --c-ink: 59 47 42;           /* #3B2F2A texte courant (11,8:1) */
+  --c-title: 91 42 30;         /* #5B2A1E titres (10,7:1) */
+  --c-muted: 110 95 86;        /* #6E5F56 texte secondaire (5,6:1) */
+  --c-line: 230 216 198;       /* #E6D8C6 bordures */
+  --c-primary: 184 74 47;      /* #B84A2F terracotta — accent, boutons */
+  --c-on-primary: 255 255 255; /* texte sur bouton (5,2:1) */
+  --c-link: 161 63 38;         /* #A13F26 liens (5,9:1) */
+  --c-tag: 225 234 219;        /* #E1EADB fond des étiquettes */
+  --c-tag-ink: 63 91 69;       /* #3F5B45 texte des étiquettes (6,1:1) */
+
+  /* Couleurs décoratives (formes, fonds doux — jamais pour du texte) */
+  --c-peach: 244 183 154;      /* #F4B79A pêche */
+  --c-sage: 169 194 160;       /* #A9C2A0 vert sauge */
+
+  /* Badges de type de projet (fond / texte) */
+  --c-pro: 249 220 207;
+  --c-pro-ink: 142 53 32;
+  --c-perso: 220 232 214;
+  --c-perso-ink: 63 91 69;
+  --c-cours: 251 227 196;
+  --c-cours-ink: 122 74 18;
+
+  --nav-h: 4rem;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: calc(var(--nav-h) + 1rem);
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-page text-ink font-sans leading-relaxed;
+    font-size: 1.0625rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-title;
+    text-wrap: balance;
+    font-optical-sizing: auto;
+  }
+
+  a {
+    @apply text-link underline decoration-1 underline-offset-[3px];
+  }
+  a:hover {
+    @apply decoration-2;
+  }
+
+  :focus-visible {
+    outline: 3px solid rgb(var(--c-primary));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: rgb(var(--c-peach) / 0.6);
+    color: rgb(var(--c-ink));
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-line bg-surface px-5 py-2.5
+      font-bold text-title no-underline transition-colors duration-200;
+  }
+  .btn:hover {
+    @apply border-primary text-primary;
+  }
+
+  .btn-primary {
+    @apply border-primary bg-primary text-on-primary;
+  }
+  .btn-primary:hover {
+    @apply border-link bg-link text-on-primary;
+  }
+
+  .btn[aria-disabled='true'] {
+    @apply cursor-not-allowed border-dashed text-muted hover:border-line hover:text-muted;
+  }
+
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.14em] text-primary;
+  }
+
+  /* Cadre « image à venir » à la place d'une image manquante */
+  .placeholder {
+    @apply flex items-center justify-center rounded-2xl border-2 border-dashed border-line p-4
+      text-center text-sm text-muted;
+    background-color: rgb(var(--c-surface));
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgb(var(--c-peach) / 0.12) 0 12px,
+      transparent 12px 24px
+    );
+  }
+
+  .card {
+    @apply rounded-3xl border border-line bg-surface;
+  }
+
+  /* Texte long : justifié avec césure, seulement sur écrans ≥ 768 px */
+  .prose-site p {
+    @apply mb-4 last:mb-0;
+  }
+  @media (min-width: 768px) {
+    .prose-site p,
+    .text-justify-md {
+      text-align: justify;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+  }
+}
+
+/* Transitions de page */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.fade-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* Respect de « réduire les animations » */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
