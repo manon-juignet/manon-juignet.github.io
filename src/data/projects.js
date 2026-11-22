@@ -15,6 +15,8 @@
 //  - level    : 'BUT 1', 'BUT 2', 'BUT 3'… (sert au filtre de la page Projets)
 //  - featured : 1, 2 ou 3 = mis en avant sur l'accueil dans cet ordre.
 //               Supprime la ligne pour ne pas le mettre en avant.
+//  - upcoming : true = badge « À venir » (projet pas encore réalisé).
+//               Supprime la ligne quand le projet est fait.
 //  - team     : coéquipiers à créditer, ou null
 //  - image    : null = cadre « image à venir ». Sinon :
 //               { src: 'images/mon-image.jpg', alt: 'Description de l’image' }
@@ -28,6 +30,24 @@
 // ===================================================================
 
 export default [
+  // ----------------------------- BUT 3 -----------------------------
+  {
+    slug: 'onduleur',
+    type: 'cours',
+    level: 'BUT 3',
+    featured: 2,
+    upcoming: true,
+    title: 'Création d’un onduleur',
+    summary: 'Projet de BUT 3 à venir : conception d’un onduleur.',
+    context: 'BUT 3 · à venir',
+    team: null,
+    tags: ['Électronique de puissance'],
+    image: null,
+    gallery: [],
+    github: null,
+    details: { story: [], stats: [], lesson: null },
+  },
+
   // ----------------------------- BUT 2 -----------------------------
   {
     slug: 'refuge-autonome',
@@ -37,7 +57,7 @@ export default [
     title: 'Refuge autonome',
     summary: 'Rendre un refuge de montagne autonome en électricité, puis simuler un compteur Linky.',
     context: 'Projet de groupe · BUT 2 · 2025-2026',
-    team: '[Coéquipiers à créditer]',
+    team: 'Projet de groupe avec des camarades de classe',
     tags: ['Photovoltaïque', 'QElectroTech', 'AOP', 'Mesure'],
     image: null,
     gallery: [],
@@ -129,7 +149,7 @@ export default [
     title: 'Kart électrique',
     summary: 'Reprise de la restauration d’un kart électrique commencée par les promotions précédentes.',
     context: 'Projet de groupe · BUT 2 · 2025-2026',
-    team: '[Binôme et équipe à créditer]',
+    team: 'En binôme, avec des camarades de classe',
     tags: ['Gestion de projet', 'Batteries'],
     image: null,
     gallery: [],
@@ -171,7 +191,6 @@ export default [
     slug: 'console-retrogaming',
     type: 'cours',
     level: 'BUT 1',
-    featured: 2,
     title: 'Console rétrogaming',
     summary: 'Un prototype complet de console de jeu rétro, de la carte électronique aux jeux programmés en Python.',
     context: 'Projet de cours · BUT 1 · 2024-2025',

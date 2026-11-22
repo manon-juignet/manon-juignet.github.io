@@ -23,19 +23,27 @@
 export const timeline = [
   {
     kind: 'experience',
-    period: '[Dates à préciser]',
+    period: 'Sept. 2025 – août 2027',
     title: 'Alternance chez Enedis',
     place: 'Agence d’Interventions Spécialisées (AIS)',
-    description: '[Intitulé du poste à préciser]',
+    description: 'Technicienne, Agence d’Interventions Spécialisées',
     points: [],
   },
   {
     kind: 'formation',
-    period: '2024 – [à préciser]',
+    period: '2024 – 2027',
     title: 'BUT Génie Électrique et Informatique Industrielle (GEII)',
     place: 'IUT de Rennes',
     description: null,
-    points: ['BUT 1 : 2024-2025', 'BUT 2 : 2025-2026', '[Année en cours, parcours suivi et bac d’origine à préciser]'],
+    points: ['BUT 1 : 2024-2025', 'BUT 2 : 2025-2026', 'BUT 3 : 2026-2027, parcours Électricité et maîtrise de l’énergie (EME)'],
+  },
+  {
+    kind: 'formation',
+    period: '2024',
+    title: 'Bac STI2D, option Énergies et environnement',
+    place: null,
+    description: null,
+    points: [],
   },
 ]
 
@@ -43,6 +51,10 @@ export const alternance = {
   title: 'Alternance chez Enedis',
   place: 'Agence d’Interventions Spécialisées',
   intro: 'Mes missions, réalisées en binôme.',
+  // Vidéo de présentation (null pour la masquer). Dépose le MP4 et son
+  // image d’aperçu dans public/videos/, par exemple :
+  // video: { src: 'videos/alternance.mp4', poster: 'videos/alternance.webp', title: 'Mon alternance en 3 minutes' },
+  video: null,
   missions: [
     {
       title: 'Protections HTA (20 kV)',
@@ -100,5 +112,5 @@ export const tools = [
   { title: 'Électronique', items: ['Conception et routage de PCB', 'Soudure', 'NE555', 'AOP', 'MOSFET', 'Capteur à effet Hall', 'Plaque Labdec'] },
   { title: 'Terrain', items: ['Vérificateur de branchement', 'Kit d’injection', 'Bus DALI'] },
   { title: 'Normes', items: ['NF C 15-100'] },
-  { title: 'Langues', items: ['[Langues et niveaux à préciser]'] },
+  { title: 'Langues', items: ['Anglais B1 (TOEIC prévu cette année)'] },
 ]

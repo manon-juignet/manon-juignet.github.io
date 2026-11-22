@@ -19,23 +19,24 @@ export default {
   role: 'BUT GEII à l’IUT de Rennes · alternante chez Enedis',
 
   // Accroche : 1 à 2 phrases sur ce que tu cherches et pour quand
-  tagline: '[Accroche à écrire : ce que Manon recherche (stage, alternance, école d’ingénieurs ?) et pour quand.]',
+  tagline: 'Étudiante en BUT Génie Électrique et Informatique Industrielle (GEII) à l’IUT de Rennes et alternante chez Enedis à l’Agence d’Interventions Spécialisées.',
 
   // Disponibilité affichée sur l'accueil (null pour la masquer)
-  availability: '[Recherche : type de contrat et date à préciser]',
+  availability: 'Alternance en école d’ingénieurs · dès septembre 2027 · 3 ans',
 
   // « En bref » : petites cartes sous l'accroche (ajoute ou retire des lignes)
   highlights: [
     { label: 'Formation', value: 'BUT Génie Électrique et Informatique Industrielle, IUT de Rennes' },
     { label: 'Alternance', value: 'Enedis, Agence d’Interventions Spécialisées' },
-    { label: 'Recherche', value: '[Stage, alternance ou poursuite d’études : à préciser]' },
+    { label: 'Recherche', value: 'Alternance en école d’ingénieurs (3 ans) dès septembre 2027' },
+    { label: 'Domaines', value: 'Réseaux électriques, électrotechnique, énergie' },
   ],
 
   // Phrases d'introduction des pages (null pour les masquer)
   projectsIntro: 'Les projets réalisés pendant mon BUT GEII à l’IUT de Rennes : électronique, automatisme et installations électriques.',
   parcoursIntro: 'Mon BUT GEII à l’IUT de Rennes, en alternance chez Enedis.',
 
-  email: '[email]',
+  email: 'manon.juignet@icloud.com',
   linkedin: 'https://www.linkedin.com/in/manon-juignet-/',
   github: null,
 

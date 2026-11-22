@@ -53,32 +53,27 @@ Dans `src/data/projects.js`, copie un bloc entier de `{` à `},`, colle-le dans 
 - `slug` : un identifiant unique, en minuscules, avec des tirets (il apparaît dans l'adresse : `#/projets/mon-slug`) ;
 - `type` : `'pro'`, `'perso'` ou `'cours'` ;
 - `level` : `'BUT 1'`, `'BUT 2'`, `'BUT 3'`… (un nouveau niveau ajoute tout seul son filtre sur la page Projets) ;
-- `featured` : `1`, `2` ou `3` pour le mettre en avant sur l'accueil (sinon supprime la ligne).
+- `featured` : `1`, `2` ou `3` pour le mettre en avant sur l'accueil (sinon supprime la ligne) ;
+- `upcoming: true` affiche un badge « À venir » : supprime la ligne une fois le projet réalisé.
+
+## Ajouter ou changer la vidéo d'alternance
+
+1. Dépose la vidéo (MP4) et une image d'aperçu (WebP ou JPG) dans `public/videos/`.
+2. Dans `parcours.js`, bloc `alternance`, remplace `video: null` par :
+   ```js
+   video: { src: 'videos/alternance.mp4', poster: 'videos/alternance.webp', title: 'Mon alternance en 3 minutes' },
+   ```
 
 ---
 
-## Infos encore à compléter (entre crochets sur le site)
+## Infos encore à compléter
 
 Les textes du site reprennent l'ancien site Google Sites, reformulés sans rien ajouter : **relis-les et corrige ce qui ne te convient pas.**
 
-### `src/data/site.js`
-- [ ] `tagline` : accroche (ce que tu recherches : stage, alternance, école d'ingénieurs ? pour quand ?)
-- [ ] `availability` : type de contrat et date
-- [ ] `highlights` : la carte « Recherche »
-- [ ] `email` : adresse de contact à afficher
-- [ ] `cv` : CV à jour en PDF (l'ancien site avait `CV_Juignet_Manon.pdf`)
-- [ ] `github` : lien si tu en as un (sinon laisser `null`)
-
-### `src/data/parcours.js`
-- [ ] Alternance Enedis : dates et intitulé du poste
-- [ ] BUT GEII : année en cours, parcours suivi, bac d'origine
-- [ ] Langues et niveaux
-- [ ] Centres d'intérêt, si tu veux les afficher (à ajouter)
-- [ ] Vidéo « alternance en 3 min » de l'ancien site : la remettre ?
-
-### `src/data/projects.js`
-- [ ] Coéquipiers à créditer : Refuge autonome, Kart électrique (et les autres projets de groupe)
-- [ ] Projets mis en avant sur l'accueil : Refuge autonome, Console rétrogaming, Trottinette électrique, à confirmer
-- [ ] Photos et vidéos des projets à garder (console, maquettes, cartes…)
-- [ ] Projets récents (BUT 3) à ajouter
+- [ ] `site.js` → `cv` : CV à jour en PDF (voir « Ajouter le CV »)
+- [ ] `site.js` → `github` : lien si tu en as un (sinon laisser `null`)
+- [ ] `parcours.js` → vidéo « alternance en 3 min » (voir plus haut)
+- [ ] `parcours.js` → centres d'intérêt, si tu veux les afficher (à ajouter)
+- [ ] `projects.js` → photos et vidéos des projets (voir « Ajouter une image »)
+- [ ] `projects.js` → détails du projet onduleur, puis tes autres projets de BUT 3
 - [ ] « Proteus » : vérifier le nom du logiciel (écrit « Protheus » sur l'ancien site)
