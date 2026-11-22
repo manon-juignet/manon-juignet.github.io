@@ -28,6 +28,7 @@ const details = computed(() => project.value?.details ?? {})
       </div>
       <h1 class="mt-3 max-w-3xl text-4xl font-semibold sm:text-5xl">{{ project.title }}</h1>
       <p class="mt-4 max-w-2xl text-lg">{{ project.summary }}</p>
+      <p v-if="project.team" class="mt-2 text-muted"><span class="font-bold">Équipe :</span> {{ project.team }}</p>
 
       <div class="mt-6 flex flex-wrap items-center gap-3">
         <ul class="flex flex-wrap gap-1.5" aria-label="Outils et méthodes">
