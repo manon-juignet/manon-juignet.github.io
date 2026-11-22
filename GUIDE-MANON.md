@@ -52,37 +52,33 @@ Le bouton de téléchargement apparaît alors sur la page Parcours.
 Dans `src/data/projects.js`, copie un bloc entier de `{` à `},`, colle-le dans la liste, puis change :
 - `slug` : un identifiant unique, en minuscules, avec des tirets (il apparaît dans l'adresse : `#/projets/mon-slug`) ;
 - `type` : `'pro'`, `'perso'` ou `'cours'` ;
+- `level` : `'BUT 1'`, `'BUT 2'`, `'BUT 3'`… (un nouveau niveau ajoute tout seul son filtre sur la page Projets) ;
 - `featured` : `1`, `2` ou `3` pour le mettre en avant sur l'accueil (sinon supprime la ligne).
 
 ---
 
-## Contenus provisoires à remplacer
+## Infos encore à compléter (entre crochets sur le site)
+
+Les textes du site reprennent l'ancien site Google Sites, reformulés sans rien ajouter : **relis-les et corrige ce qui ne te convient pas.**
 
 ### `src/data/site.js`
-- [ ] `role` : formation et spécialité
-- [ ] `tagline` : accroche (1 à 2 phrases, concrètes)
-- [ ] `availability` : type de contrat, durée, date de début, rythme
-- [ ] `highlights` : Formation, Recherche, Mobilité
-- [ ] `projectsIntro` et `parcoursIntro` : phrases d'introduction (ou `null`)
-- [ ] `email` : adresse de contact
-- [ ] `linkedin`, `github` : liens (ou laisser `null`)
-- [ ] `photo` : portrait (+ texte `alt`)
-- [ ] `cv` : PDF du CV
-
-### `src/data/projects.js` (×3 projets)
-- [ ] `title`, `summary`, `context`, `tags`
-- [ ] `image` et éventuellement `gallery`
-- [ ] `github` si le code est public
-- [ ] `details.story` : point de départ, démarche, résultats
-- [ ] `details.stats` : chiffres clés (ou `[]`)
-- [ ] `details.lesson` : ce que tu en retiens (ou `null`)
-- [ ] `slug` : à renommer d'après le vrai nom du projet
+- [ ] `tagline` : accroche (ce que tu recherches : stage, alternance, école d'ingénieurs ? pour quand ?)
+- [ ] `availability` : type de contrat et date
+- [ ] `highlights` : la carte « Recherche »
+- [ ] `email` : adresse de contact à afficher
+- [ ] `cv` : CV à jour en PDF (l'ancien site avait `CV_Juignet_Manon.pdf`)
+- [ ] `github` : lien si tu en as un (sinon laisser `null`)
 
 ### `src/data/parcours.js`
-- [ ] Expérience : période, intitulé, entreprise, description, missions
-- [ ] Formation : période, diplôme, école, spécialité, matières
-- [ ] Compétences techniques, logiciels et langages, niveaux de langue
+- [ ] Alternance Enedis : dates et intitulé du poste
+- [ ] BUT GEII : année en cours, parcours suivi, bac d'origine
+- [ ] Langues et niveaux
+- [ ] Centres d'intérêt, si tu veux les afficher (à ajouter)
+- [ ] Vidéo « alternance en 3 min » de l'ancien site : la remettre ?
 
-### Hors `src/data/` (pour quelqu'un à l'aise avec le code)
-- [ ] `index.html` : `<meta name="description">` et balises `og:` si la spécialité change
-- [ ] Image d'aperçu pour LinkedIn (`og:image`), une fois la photo disponible
+### `src/data/projects.js`
+- [ ] Coéquipiers à créditer : Refuge autonome, Kart électrique (et les autres projets de groupe)
+- [ ] Projets mis en avant sur l'accueil : Refuge autonome, Console rétrogaming, Trottinette électrique, à confirmer
+- [ ] Photos et vidéos des projets à garder (console, maquettes, cartes…)
+- [ ] Projets récents (BUT 3) à ajouter
+- [ ] « Proteus » : vérifier le nom du logiciel (écrit « Protheus » sur l'ancien site)

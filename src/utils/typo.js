@@ -4,9 +4,16 @@
 // Manon n'a donc rien de spécial à taper dans les fichiers de données.
 const NBSP = ' '
 
+// Unités courantes : « 24 V », « 6,7 kWh », « 5 163,40 € » restent sur une ligne
+const UNITS = '(?:kWh|Wh|kW|W|kVA|VA|kV|V|mA|A|ms|s|min|h|°C|€|%)'
+
 export function fr(text) {
   if (typeof text !== 'string') return text
-  return text.replace(/[ \t]+([:;!?»])/g, `${NBSP}$1`).replace(/«[ \t]+/g, `«${NBSP}`)
+  return text
+    .replace(/[ \t]+([:;!?»])/g, `${NBSP}$1`)
+    .replace(/«[ \t]+/g, `«${NBSP}`)
+    .replace(/(\d) (?=\d{3}\b)/g, `$1${NBSP}`) // séparateur de milliers
+    .replace(new RegExp(`(\\d) (?=${UNITS}(?![\\p{L}]))`, 'gu'), `$1${NBSP}`) // nombre + unité
 }
 
 /** Applique fr() à toutes les chaînes d'un objet ou tableau (récursif). */
