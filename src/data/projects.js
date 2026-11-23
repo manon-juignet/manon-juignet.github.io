@@ -18,11 +18,20 @@
 //  - upcoming : true = badge « À venir » (projet pas encore réalisé).
 //               Supprime la ligne quand le projet est fait.
 //  - team     : coéquipiers à créditer, ou null
-//  - image    : null = cadre « image à venir ». Sinon :
-//               { src: 'images/mon-image.jpg', alt: 'Description de l’image' }
-//               (dépose le fichier dans public/images/).
-//  - gallery  : liste d'images du même format, légende facultative :
-//               [{ src: 'images/a.jpg', alt: '…', caption: '…' }]
+//  - image    : vignette de la carte. null = cadre « image à venir ». Sinon :
+//               { src: 'images/projets/mon-slug/photo.webp', alt: 'Description',
+//                 kind: 'photo', w: 1200, h: 800 }
+//               (dépose le fichier dans public/images/projets/mon-slug/).
+//  - gallery  : liste d'images du même format, avec une légende :
+//               [{ src: '…', alt: '…', caption: '…', kind: 'photo', w: …, h: … }]
+//               kind : 'photo' = l'image peut être recadrée dans la grille ;
+//                      'schema' = jamais recadrée, sur fond blanc (schémas,
+//                      plans, tableaux). Un schéma large prend toute la ligne.
+//               w et h : largeur et hauteur de l'image en pixels (visibles
+//               dans les propriétés du fichier) : évitent que la page saute.
+//               Un clic sur une image l'affiche en grand.
+//  - video    : vidéo en tête de galerie, ou absent :
+//               { src: '…mp4', poster: '…webp', caption: '…' }
 //  - github   : lien vers le code, ou null
 //  - details.story  : un bloc par paragraphe (titre + texte)
 //  - details.stats  : les gros chiffres (valeur + explication), ou []
@@ -59,8 +68,17 @@ export default [
     context: 'Projet de groupe · BUT 2 · 2025-2026',
     team: 'Projet de groupe avec des camarades de classe',
     tags: ['Photovoltaïque', 'QElectroTech', 'AOP', 'Mesure'],
-    image: null,
-    gallery: [],
+    image: { src: 'images/projets/refuge-autonome/photo-de-la-carte-electronique.webp', alt: 'Photo de la carte électronique', kind: 'photo', w: 745, h: 546 },
+    gallery: [
+      { src: 'images/projets/refuge-autonome/photo-de-la-carte-electronique-vue-du-dessus.webp', alt: 'Photo de la carte électronique vue du dessus', caption: 'Photo de la carte électronique vue du dessus', kind: 'photo', w: 564, h: 535 },
+      { src: 'images/projets/refuge-autonome/photo-de-la-carte-electronique.webp', alt: 'Photo de la carte électronique', caption: 'Photo de la carte électronique', kind: 'photo', w: 745, h: 546 },
+      { src: 'images/projets/refuge-autonome/energie-consommee-estimee.webp', alt: 'Énergie consommée estimée', caption: 'Énergie consommée estimée', kind: 'schema', w: 658, h: 634 },
+      { src: 'images/projets/refuge-autonome/analyse-fonctionnelle-d-un-compteur-linky.webp', alt: 'Analyse fonctionnelle d’un compteur linky', caption: 'Analyse fonctionnelle d’un compteur linky', kind: 'schema', w: 558, h: 738 },
+      { src: 'images/projets/refuge-autonome/puissance-consommee-estimee.webp', alt: 'Puissance consommée estimée', caption: 'Puissance consommée estimée', kind: 'schema', w: 652, h: 612 },
+      { src: 'images/projets/refuge-autonome/schema-qet.webp', alt: 'Schéma de la chaîne d’énergie (QElectroTech)', caption: 'Schéma de la chaîne d’énergie (QElectroTech)', kind: 'schema', w: 769, h: 475 },
+      { src: 'images/projets/refuge-autonome/schema-structurel.webp', alt: 'Schéma structurel', caption: 'Schéma structurel', kind: 'schema', w: 1060, h: 744 },
+      { src: 'images/projets/refuge-autonome/synthese-de-la-chaine-d-energie.webp', alt: 'Synthèse de la chaîne d’énergie', caption: 'Synthèse de la chaîne d’énergie', kind: 'schema', w: 906, h: 375 },
+    ],
     github: null,
     details: {
       story: [
@@ -87,8 +105,15 @@ export default [
     context: 'Projet de cours · BUT 2 · 2025-2026',
     team: null,
     tags: ['PWM', 'NE555', 'MOSFET', 'Électronique de puissance'],
-    image: null,
-    gallery: [],
+    image: { src: 'images/projets/trottinette-electrique/carte-de-commande.webp', alt: 'Carte de commande', kind: 'photo', w: 664, h: 370 },
+    gallery: [
+      { src: 'images/projets/trottinette-electrique/carte-de-commande.webp', alt: 'Carte de commande', caption: 'Carte de commande', kind: 'photo', w: 664, h: 370 },
+      { src: 'images/projets/trottinette-electrique/carte-de-puissance-vue-du-dessous.webp', alt: 'Carte de puissance vue du dessous', caption: 'Carte de puissance vue du dessous', kind: 'photo', w: 426, h: 328 },
+      { src: 'images/projets/trottinette-electrique/carte-de-puissance-vue-du-dessus-avec-les-condensa.webp', alt: 'Carte de puissance vue du dessus, avec les condensateurs C4 à tester', caption: 'Carte de puissance vue du dessus, avec les condensateurs C4 à tester', kind: 'photo', w: 543, h: 430 },
+      { src: 'images/projets/trottinette-electrique/trottinette-electrique-demontee.webp', alt: 'Trottinette électrique démontée', caption: 'Trottinette électrique démontée', kind: 'photo', w: 348, h: 739 },
+      { src: 'images/projets/trottinette-electrique/chaine-d-information-et-d-energie-avec-les-amelior.webp', alt: 'Chaîne d’information et d’énergie avec les améliorations en rouge', caption: 'Chaîne d’information et d’énergie avec les améliorations en rouge', kind: 'schema', w: 1161, h: 505 },
+      { src: 'images/projets/trottinette-electrique/schema-structurel.webp', alt: 'Schéma structurel', caption: 'Schéma structurel', kind: 'schema', w: 723, h: 487 },
+    ],
     github: null,
     details: {
       story: [
@@ -110,8 +135,14 @@ export default [
     context: 'Projet de cours · BUT 2 · 2025-2026',
     team: null,
     tags: ['NF C 15-100', 'Tableau électrique', 'Nomenclature'],
-    image: null,
-    gallery: [],
+    image: { src: 'images/projets/nf-c-15-100/tableau-de-repartition.webp', alt: 'Tableau de répartition', kind: 'schema', w: 960, h: 649 },
+    gallery: [
+      { src: 'images/projets/nf-c-15-100/nomenclature-1-2.webp', alt: 'Nomenclature (1/2)', caption: 'Nomenclature (1/2)', kind: 'schema', w: 967, h: 537 },
+      { src: 'images/projets/nf-c-15-100/nomenclature-2-2.webp', alt: 'Nomenclature (2/2)', caption: 'Nomenclature (2/2)', kind: 'schema', w: 960, h: 441 },
+      { src: 'images/projets/nf-c-15-100/prises-et-eclairage.webp', alt: 'Prises et éclairage', caption: 'Prises et éclairage', kind: 'schema', w: 966, h: 651 },
+      { src: 'images/projets/nf-c-15-100/prises-eclairage-et-chauffage.webp', alt: 'Prises, éclairage et chauffage', caption: 'Prises, éclairage et chauffage', kind: 'schema', w: 960, h: 649 },
+      { src: 'images/projets/nf-c-15-100/tableau-de-repartition.webp', alt: 'Tableau de répartition', caption: 'Tableau de répartition', kind: 'schema', w: 960, h: 649 },
+    ],
     github: null,
     details: {
       story: [
@@ -131,8 +162,11 @@ export default [
     context: 'Projet de cours · BUT 2 · 2025-2026',
     team: null,
     tags: ['Elec Calc', 'NF C 15-100'],
-    image: null,
-    gallery: [],
+    image: { src: 'images/projets/installation-electrique/schema-rendu-avec-la-version-education-du-logiciel.webp', alt: 'Schéma rendu avec Elec Calc, version éducation (2/2)', kind: 'schema', w: 594, h: 526 },
+    gallery: [
+      { src: 'images/projets/installation-electrique/schema-rendu-avec-la-version-education-du-logiciel.webp', alt: 'Schéma rendu avec Elec Calc, version éducation (2/2)', caption: 'Schéma rendu avec Elec Calc, version éducation (2/2)', kind: 'schema', w: 594, h: 526 },
+      { src: 'images/projets/installation-electrique/schema-rendu-avec-la-version-education-du-logiciel.webp', alt: 'Schéma rendu avec Elec Calc, version éducation (1/2)', caption: 'Schéma rendu avec Elec Calc, version éducation (1/2)', kind: 'schema', w: 753, h: 424 },
+    ],
     github: null,
     details: {
       story: [
@@ -173,8 +207,22 @@ export default [
     context: 'Projet de cours · BUT 2 · 2025-2026',
     team: null,
     tags: ['SEE Electrical', 'DALI', 'Automate', 'Câblage'],
-    image: null,
-    gallery: [],
+    image: { src: 'images/projets/cablage-gtb/couloir-et-bureau.webp', alt: 'Couloir et bureau', kind: 'photo', w: 904, h: 516 },
+    gallery: [
+      { src: 'images/projets/cablage-gtb/borniers-vers-les-etages-et-dispositif-du-sous-sol.webp', alt: 'Borniers vers les étages et dispositif du sous-sol', caption: 'Borniers vers les étages et dispositif du sous-sol', kind: 'photo', w: 919, h: 522 },
+      { src: 'images/projets/cablage-gtb/couloir-et-bureau.webp', alt: 'Couloir et bureau', caption: 'Couloir et bureau', kind: 'photo', w: 904, h: 516 },
+      { src: 'images/projets/cablage-gtb/maquette-a-cabler.webp', alt: 'Maquette à câbler', caption: 'Maquette à câbler', kind: 'photo', w: 268, h: 679 },
+      { src: 'images/projets/cablage-gtb/salle-de-classe.webp', alt: 'Salle de classe', caption: 'Salle de classe', kind: 'photo', w: 937, h: 510 },
+      { src: 'images/projets/cablage-gtb/schema-de-principe.webp', alt: 'Schéma de principe', caption: 'Schéma de principe', kind: 'schema', w: 1161, h: 436 },
+      { src: 'images/projets/cablage-gtb/folio-04-tableau-de-distribution.webp', alt: 'Folio 4 : tableau de distribution', caption: 'Folio 4 : tableau de distribution', kind: 'schema', w: 1800, h: 1273 },
+      { src: 'images/projets/cablage-gtb/folio-05-couloir.webp', alt: 'Folio 5 : couloir', caption: 'Folio 5 : couloir', kind: 'schema', w: 1800, h: 1273 },
+      { src: 'images/projets/cablage-gtb/folio-06-prises-bureau-salle-de-classe.webp', alt: 'Folio 6 : prises du bureau et de la salle de classe', caption: 'Folio 6 : prises du bureau et de la salle de classe', kind: 'schema', w: 1800, h: 1273 },
+      { src: 'images/projets/cablage-gtb/folio-07-alimentation-led-capteur.webp', alt: 'Folio 7 : alimentation des LED 24 V et capteur de la salle de classe', caption: 'Folio 7 : alimentation des LED 24 V et capteur de la salle de classe', kind: 'schema', w: 1800, h: 1273 },
+      { src: 'images/projets/cablage-gtb/folio-08-module-entree-capteur.webp', alt: 'Folio 8 : commande du module d’entrée et capteur', caption: 'Folio 8 : commande du module d’entrée et capteur', kind: 'schema', w: 1800, h: 1273 },
+      { src: 'images/projets/cablage-gtb/folio-09-repartiteur-dali.webp', alt: 'Folio 9 : répartiteur DALI', caption: 'Folio 9 : répartiteur DALI', kind: 'schema', w: 1800, h: 1273 },
+      { src: 'images/projets/cablage-gtb/folio-13-code-couleurs-cables.webp', alt: 'Folio 13 : code couleurs et sections des câbles', caption: 'Folio 13 : code couleurs et sections des câbles', kind: 'schema', w: 1123, h: 344 },
+      { src: 'images/projets/cablage-gtb/folio-14-nomenclature.webp', alt: 'Folio 14 : nomenclature du matériel', caption: 'Folio 14 : nomenclature du matériel', kind: 'schema', w: 1800, h: 1273 },
+    ],
     github: null,
     details: {
       story: [
@@ -196,8 +244,14 @@ export default [
     context: 'Projet de cours · BUT 1 · 2024-2025',
     team: null,
     tags: ['PCB', 'Soudure', 'Python'],
-    image: null,
-    gallery: [],
+    image: { src: 'images/projets/console-retrogaming/face-avant-de-la-carte.webp', alt: 'Face avant de la carte', kind: 'photo', w: 1041, h: 652 },
+    gallery: [
+      { src: 'images/projets/console-retrogaming/face-avant-de-la-carte.webp', alt: 'Face avant de la carte', caption: 'Face avant de la carte', kind: 'photo', w: 1041, h: 652 },
+      { src: 'images/projets/console-retrogaming/reparations-de-la-carte-entourees-en-rouge.webp', alt: 'Réparations de la carte, entourées en rouge', caption: 'Réparations de la carte, entourées en rouge', kind: 'photo', w: 1021, h: 715 },
+      { src: 'images/projets/console-retrogaming/schema-structurel-1-2.webp', alt: 'Schéma structurel (1/2)', caption: 'Schéma structurel (1/2)', kind: 'schema', w: 1053, h: 718 },
+      { src: 'images/projets/console-retrogaming/schema-structurel-2-2.webp', alt: 'Schéma structurel (2/2)', caption: 'Schéma structurel (2/2)', kind: 'schema', w: 1065, h: 718 },
+    ],
+    video: { src: 'images/projets/console-retrogaming/video-de-demo.mp4', poster: 'images/projets/console-retrogaming/video-de-demo.webp', caption: 'Démo du jeu Space Rescue sur la console' },
     github: null,
     details: {
       story: [
@@ -219,8 +273,12 @@ export default [
     context: 'Projet de cours · BUT 1 · 2024-2025',
     team: null,
     tags: ['Électronique', 'Dossier de fabrication', 'Tests'],
-    image: null,
-    gallery: [],
+    image: { src: 'images/projets/variateur-de-lumiere/la-face-du-dessus-du-prototype-avec-les-composants.webp', alt: 'Face du dessus du prototype, avec les composants traversants', kind: 'photo', w: 432, h: 424 },
+    gallery: [
+      { src: 'images/projets/variateur-de-lumiere/la-face-du-dessous-du-prototype-on-peut-y-voire-le.webp', alt: 'Face du dessous du prototype : tracé des pistes et soudures', caption: 'Face du dessous du prototype : tracé des pistes et soudures', kind: 'photo', w: 513, h: 522 },
+      { src: 'images/projets/variateur-de-lumiere/la-face-du-dessus-du-prototype-avec-les-composants.webp', alt: 'Face du dessus du prototype, avec les composants traversants', caption: 'Face du dessus du prototype, avec les composants traversants', kind: 'photo', w: 432, h: 424 },
+      { src: 'images/projets/variateur-de-lumiere/le-prototype-existant-dont-nous-sommes-parti-compo.webp', alt: 'Le prototype de départ : un transistor (1) et deux circuits intégrés (2 et 3) qui amplifient le courant', caption: 'Le prototype de départ : un transistor (1) et deux circuits intégrés (2 et 3) qui amplifient le courant', kind: 'photo', w: 504, h: 357 },
+    ],
     github: null,
     details: {
       story: [
@@ -241,8 +299,15 @@ export default [
     context: 'Projet de cours · BUT 1 · 2024-2025',
     team: null,
     tags: ['Proteus', 'Analyse fonctionnelle', 'Prototypage'],
-    image: null,
-    gallery: [],
+    image: { src: 'images/projets/borne-de-recharge/maquette-de-la-partie-commande-et-protection-2.webp', alt: 'Maquette de la partie commande et protection (vue 2)', kind: 'photo', w: 958, h: 442 },
+    gallery: [
+      { src: 'images/projets/borne-de-recharge/maquette-de-la-partie-commande-et-protection-2.webp', alt: 'Maquette de la partie commande et protection (vue 2)', caption: 'Maquette de la partie commande et protection (vue 2)', kind: 'photo', w: 958, h: 442 },
+      { src: 'images/projets/borne-de-recharge/maquette-de-la-partie-commande-et-protection.webp', alt: 'Maquette de la partie commande et protection', caption: 'Maquette de la partie commande et protection', kind: 'photo', w: 339, h: 526 },
+      { src: 'images/projets/borne-de-recharge/schema-electrique-de-la-partie-alimentation-couran.webp', alt: 'Schéma électrique de la partie alimentation courant fort', caption: 'Schéma électrique de la partie alimentation courant fort', kind: 'schema', w: 924, h: 633 },
+      { src: 'images/projets/borne-de-recharge/schema-electrique-de-la-partie-puissance.webp', alt: 'Schéma électrique de la partie puissance', caption: 'Schéma électrique de la partie puissance', kind: 'schema', w: 850, h: 703 },
+      { src: 'images/projets/borne-de-recharge/schema-fonctionnel.webp', alt: 'Schéma fonctionnel', caption: 'Schéma fonctionnel', kind: 'schema', w: 1036, h: 598 },
+      { src: 'images/projets/borne-de-recharge/schema-structurel-de-la-partie-commande-et-protect.webp', alt: 'Schéma structurel de la partie commande et protection', caption: 'Schéma structurel de la partie commande et protection', kind: 'schema', w: 1069, h: 612 },
+    ],
     github: null,
     details: {
       story: [
@@ -263,8 +328,11 @@ export default [
     context: 'Projet de cours · BUT 1 · 2024-2025',
     team: null,
     tags: ['Codesys', 'Grafcet', 'Ladder', 'SCL', 'Python'],
-    image: null,
-    gallery: [],
+    image: { src: 'images/projets/feux-de-route/grafcet-du-carrefour.webp', alt: 'Grafcet du carrefour', kind: 'schema', w: 1128, h: 709 },
+    gallery: [
+      { src: 'images/projets/feux-de-route/disposition-des-elements-sur-la-maquette.webp', alt: 'Disposition des éléments sur la maquette', caption: 'Disposition des éléments sur la maquette', kind: 'schema', w: 445, h: 469 },
+      { src: 'images/projets/feux-de-route/grafcet-du-carrefour.webp', alt: 'Grafcet du carrefour', caption: 'Grafcet du carrefour', kind: 'schema', w: 1128, h: 709 },
+    ],
     github: null,
     details: {
       story: [

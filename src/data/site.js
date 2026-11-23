@@ -19,7 +19,7 @@ export default {
   role: 'BUT GEII à l’IUT de Rennes · alternante chez Enedis',
 
   // Accroche : 1 à 2 phrases sur ce que tu cherches et pour quand
-  tagline: 'Étudiante en BUT Génie Électrique et Informatique Industrielle (GEII) à l’IUT de Rennes et alternante chez Enedis à l’Agence d’Interventions Spécialisées.',
+  tagline: 'Recherche école d’ingénieur et alternance pour 2027',
 
   // Disponibilité affichée sur l'accueil (null pour la masquer)
   availability: 'Alternance en école d’ingénieurs · dès septembre 2027 · 3 ans',

@@ -51,10 +51,9 @@ export const alternance = {
   title: 'Alternance chez Enedis',
   place: 'Agence d’Interventions Spécialisées',
   intro: 'Mes missions, réalisées en binôme.',
-  // Vidéo de présentation (null pour la masquer). Dépose le MP4 et son
-  // image d’aperçu dans public/videos/, par exemple :
-  // video: { src: 'videos/alternance.mp4', poster: 'videos/alternance.webp', title: 'Mon alternance en 3 minutes' },
-  video: null,
+  // Vidéo de présentation (null pour la masquer). Le MP4 et son image
+  // d’aperçu sont dans public/videos/.
+  video: { src: 'videos/alternance.mp4', poster: 'videos/alternance.webp', title: 'Mon alternance en 3 minutes' },
   missions: [
     {
       title: 'Protections HTA (20 kV)',
