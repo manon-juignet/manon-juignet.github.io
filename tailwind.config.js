@@ -19,6 +19,7 @@ export default {
         link: role('link'),
         tag: role('tag'),
         'tag-ink': role('tag-ink'),
+        paper: role('paper'),
         peach: role('peach'),
         sage: role('sage'),
         pro: role('pro'),

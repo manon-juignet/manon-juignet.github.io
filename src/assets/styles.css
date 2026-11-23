@@ -19,6 +19,7 @@
   --c-link: 161 63 38;         /* #A13F26 liens (5,9:1) */
   --c-tag: 225 234 219;        /* #E1EADB fond des étiquettes */
   --c-tag-ink: 63 91 69;       /* #3F5B45 texte des étiquettes (6,1:1) */
+  --c-paper: 255 255 255;      /* #FFFFFF fond des schémas */
 
   /* Couleurs décoratives (formes, fonds doux — jamais pour du texte) */
   --c-peach: 244 183 154;      /* #F4B79A pêche */
@@ -117,6 +118,29 @@
 
   .card {
     @apply rounded-3xl border border-line bg-surface;
+  }
+
+  /* Agrandissement d'image (ImageLightbox) */
+  .lightbox {
+    @apply fixed inset-0 m-0 h-[100dvh] max-h-none w-screen max-w-none border-0 bg-transparent p-0;
+  }
+  .lightbox[open] {
+    @apply flex;
+  }
+  .lightbox::backdrop {
+    background: rgb(var(--c-title));
+  }
+  .lightbox-btn {
+    @apply grid h-11 w-11 place-items-center rounded-full bg-surface text-xl text-title shadow transition-colors;
+  }
+  .lightbox-btn:hover {
+    @apply bg-primary text-on-primary;
+  }
+  .lightbox :focus-visible {
+    outline-color: rgb(var(--c-surface));
+  }
+  .lightbox-nav {
+    @apply absolute top-1/2 -translate-y-1/2;
   }
 
   /* Texte long : justifié avec césure, seulement sur écrans ≥ 768 px */
