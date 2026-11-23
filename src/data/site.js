@@ -22,7 +22,7 @@ export default {
   tagline: 'Recherche école d’ingénieur et alternance pour 2027',
 
   // Disponibilité affichée sur l'accueil (null pour la masquer)
-  availability: 'Alternance en école d’ingénieurs · dès septembre 2027 · 3 ans',
+  availability: null,
 
   // « En bref » : petites cartes sous l'accroche (ajoute ou retire des lignes)
   highlights: [

@@ -51,7 +51,7 @@ const links = computed(() => [
     @click="onDialogClick"
   >
     <div class="relative overflow-hidden p-6 sm:p-8">
-      <div aria-hidden="true" class="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-peach/40"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-blush/40"></div>
 
       <div class="relative flex items-start justify-between gap-4">
         <div>
@@ -70,7 +70,7 @@ const links = computed(() => [
 
       <ul class="relative mt-6 space-y-3">
         <li class="flex flex-wrap items-center gap-3 rounded-2xl border border-line bg-page/60 p-4">
-          <span class="grid h-10 w-10 place-items-center rounded-full bg-sage/40 text-tag-ink"><AppIcon name="mail" /></span>
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-sand/40 text-tag-ink"><AppIcon name="mail" /></span>
           <div class="min-w-0 flex-1">
             <p class="text-sm text-muted">E-mail</p>
             <a v-if="emailReady" :href="`mailto:${site.email}`" class="break-all font-bold">{{ site.email }}</a>
@@ -83,7 +83,7 @@ const links = computed(() => [
         </li>
 
         <li v-for="l in links" :key="l.key" class="flex items-center gap-3 rounded-2xl border border-line bg-page/60 p-4">
-          <span class="grid h-10 w-10 place-items-center rounded-full bg-peach/45 text-pro-ink"><AppIcon :name="l.icon" /></span>
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-blush/45 text-pro-ink"><AppIcon :name="l.icon" /></span>
           <div class="min-w-0 flex-1">
             <p class="text-sm text-muted">{{ l.label }}</p>
             <a v-if="l.url" :href="l.url" target="_blank" rel="noopener" class="inline-flex items-center gap-1 font-bold">

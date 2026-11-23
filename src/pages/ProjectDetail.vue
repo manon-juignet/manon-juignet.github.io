@@ -93,10 +93,10 @@ const hasGallery = computed(() => project.value?.gallery?.length || project.valu
 
     <!-- Ce que j'en retiens -->
     <section v-if="details.lesson" class="container-site mt-12">
-      <div class="relative overflow-hidden rounded-3xl bg-perso p-8 md:p-10">
-        <div aria-hidden="true" class="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-sage/50"></div>
-        <h2 class="eyebrow relative font-sans text-tag-ink">Ce que j’en retiens</h2>
-        <p class="relative mt-3 max-w-3xl font-display text-2xl leading-snug text-title">{{ details.lesson }}</p>
+      <div class="on-dark relative overflow-hidden rounded-3xl bg-wine p-8 md:p-10">
+        <div aria-hidden="true" class="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-primary/30"></div>
+        <h2 class="eyebrow relative font-sans text-on-wine">Ce que j’en retiens</h2>
+        <p class="relative mt-3 max-w-3xl font-display text-2xl leading-snug text-on-wine">{{ details.lesson }}</p>
       </div>
     </section>
 

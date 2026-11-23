@@ -5,7 +5,7 @@ import AppIcon from '../components/AppIcon.vue'
 <template>
   <section class="container-site flex flex-col items-center py-20 text-center md:py-28">
     <div class="relative" aria-hidden="true">
-      <div class="absolute inset-0 -z-10 scale-125 rounded-full bg-peach/40"></div>
+      <div class="absolute inset-0 -z-10 scale-125 rounded-full bg-blush/40"></div>
       <p class="px-6 font-display text-8xl font-semibold text-primary/80">404</p>
     </div>
     <h1 class="mt-8 text-4xl font-semibold">Page introuvable</h1>
