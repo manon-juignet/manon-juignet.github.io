@@ -4,12 +4,12 @@ import { asset } from '../utils/typo'
 import AppIcon from '../components/AppIcon.vue'
 
 const KINDS = {
-  formation: { label: 'Formation', icon: 'school', dot: 'bg-sage text-tag-ink', badge: 'bg-perso text-perso-ink' },
-  experience: { label: 'Expérience', icon: 'briefcase', dot: 'bg-peach text-pro-ink', badge: 'bg-pro text-pro-ink' },
+  formation: { label: 'Formation', icon: 'school', dot: 'bg-sand text-tag-ink', badge: 'bg-perso text-perso-ink' },
+  experience: { label: 'Expérience', icon: 'briefcase', dot: 'bg-blush text-pro-ink', badge: 'bg-pro text-pro-ink' },
 }
 const kind = (k) => KINDS[k] ?? KINDS.experience
 
-const accents = ['bg-peach/45', 'bg-sage/45', 'bg-primary/15']
+const accents = ['bg-blush/45', 'bg-sand/45', 'bg-primary/15']
 </script>
 
 <template>

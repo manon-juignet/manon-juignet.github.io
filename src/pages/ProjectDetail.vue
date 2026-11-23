@@ -1,10 +1,11 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { findProject, neighbours } from '../content'
 import TypeBadge from '../components/TypeBadge.vue'
 import MediaFrame from '../components/MediaFrame.vue'
 import StoryCards from '../components/StoryCards.vue'
+import ProjectGallery from '../components/ProjectGallery.vue'
 import AppIcon from '../components/AppIcon.vue'
 import NotFound from './NotFound.vue'
 
@@ -12,6 +13,8 @@ const route = useRoute()
 const project = computed(() => findProject(route.params.slug))
 const nav = computed(() => neighbours(route.params.slug))
 const details = computed(() => project.value?.details ?? {})
+const gallery = ref(null)
+const hasGallery = computed(() => project.value?.gallery?.length || project.value?.video?.src)
 </script>
 
 <template>
@@ -48,25 +51,27 @@ const details = computed(() => project.value?.details ?? {})
       </div>
     </header>
 
-    <!-- Image principale -->
+    <!-- Image principale : un clic l'agrandit dans la galerie -->
     <div class="container-site mt-10">
       <div class="aspect-[16/9] overflow-hidden rounded-3xl border border-line bg-surface p-3">
-        <div class="h-full overflow-hidden rounded-2xl">
-          <MediaFrame :image="project.image" eager />
+        <button
+          v-if="project.image?.src && project.gallery?.length"
+          type="button"
+          class="block h-full w-full overflow-hidden rounded-2xl"
+          @click="gallery?.openAt(project.image.src)"
+        >
+          <MediaFrame :image="project.image" eager contain />
+          <span class="sr-only">Agrandir l’image</span>
+        </button>
+        <div v-else class="h-full overflow-hidden rounded-2xl">
+          <MediaFrame :image="project.image" eager contain />
         </div>
       </div>
     </div>
 
-    <!-- Galerie -->
-    <section v-if="project.gallery?.length" class="container-site mt-6" aria-label="Galerie">
-      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <li v-for="img in project.gallery" :key="img.src">
-          <figure class="card overflow-hidden p-2">
-            <div class="aspect-[4/3] overflow-hidden rounded-2xl"><MediaFrame :image="img" /></div>
-            <figcaption v-if="img.caption" class="px-2 pb-1 pt-2 text-sm text-muted">{{ img.caption }}</figcaption>
-          </figure>
-        </li>
-      </ul>
+    <!-- Galerie : vidéo, photos puis schémas -->
+    <section v-if="hasGallery" class="container-site mt-6" aria-label="Galerie">
+      <ProjectGallery ref="gallery" :images="project.gallery ?? []" :video="project.video" />
     </section>
 
     <!-- En détail -->
@@ -88,10 +93,10 @@ const details = computed(() => project.value?.details ?? {})
 
     <!-- Ce que j'en retiens -->
     <section v-if="details.lesson" class="container-site mt-12">
-      <div class="relative overflow-hidden rounded-3xl bg-perso p-8 md:p-10">
-        <div aria-hidden="true" class="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-sage/50"></div>
-        <h2 class="eyebrow relative font-sans text-tag-ink">Ce que j’en retiens</h2>
-        <p class="relative mt-3 max-w-3xl font-display text-2xl leading-snug text-title">{{ details.lesson }}</p>
+      <div class="on-dark relative overflow-hidden rounded-3xl bg-wine p-8 md:p-10">
+        <div aria-hidden="true" class="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-primary/30"></div>
+        <h2 class="eyebrow relative font-sans text-on-wine">Ce que j’en retiens</h2>
+        <p class="relative mt-3 max-w-3xl font-display text-2xl leading-snug text-on-wine">{{ details.lesson }}</p>
       </div>
     </section>
 

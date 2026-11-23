@@ -48,7 +48,7 @@ const isActive = (to) =>
           <RouterLink
             :to="link.to"
             class="rounded-full px-2.5 py-1.5 font-bold no-underline transition-colors sm:px-3"
-            :class="isActive(link.to) ? 'bg-peach/45 text-title' : 'text-ink hover:bg-peach/25'"
+            :class="isActive(link.to) ? 'bg-blush/45 text-title' : 'text-ink hover:bg-blush/25'"
             :aria-current="route.path === link.to ? 'page' : undefined"
           >
             {{ link.label }}

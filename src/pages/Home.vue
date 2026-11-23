@@ -15,7 +15,7 @@ const { openContact } = useContact()
       <div>
         <p
           v-if="site.availability"
-          class="inline-flex items-center gap-2 rounded-full bg-sage/35 px-4 py-1.5 text-sm font-bold text-tag-ink"
+          class="inline-flex items-center gap-2 rounded-full bg-sand/35 px-4 py-1.5 text-sm font-bold text-tag-ink"
         >
           <span class="h-2 w-2 shrink-0 rounded-full bg-tag-ink" aria-hidden="true"></span>
           {{ site.availability }}
@@ -37,8 +37,8 @@ const { openContact } = useContact()
 
       <!-- Photo dans une forme organique, avec des formes douces derrière -->
       <div class="relative mx-auto w-64 sm:w-80">
-        <div aria-hidden="true" class="absolute -left-6 -top-6 h-full w-full rounded-[46%_54%_42%_58%/55%_45%_55%_45%] bg-peach/60"></div>
-        <div aria-hidden="true" class="absolute -bottom-5 -right-5 h-28 w-28 rounded-full bg-sage/60"></div>
+        <div aria-hidden="true" class="absolute -left-6 -top-6 h-full w-full rounded-[46%_54%_42%_58%/55%_45%_55%_45%] bg-blush/60"></div>
+        <div aria-hidden="true" class="absolute -bottom-5 -right-5 h-28 w-28 rounded-full bg-sand/60"></div>
         <div class="relative aspect-square overflow-hidden rounded-[42%_58%_55%_45%/50%_42%_58%_50%] border-4 border-surface bg-surface">
           <MediaFrame :image="site.photo" label="Photo à venir" eager />
         </div>
@@ -53,7 +53,7 @@ const { openContact } = useContact()
           v-for="(h, i) in site.highlights"
           :key="h.label"
           class="card flex flex-col gap-1 p-5"
-          :class="['border-t-4', ['border-t-primary', 'border-t-sage', 'border-t-peach'][i % 3]]"
+          :class="['border-t-4', ['border-t-primary', 'border-t-wine', 'border-t-rose'][i % 3]]"
         >
           <span class="eyebrow">{{ h.label }}</span>
           <span class="font-bold text-title">{{ h.value }}</span>

@@ -9,28 +9,34 @@
    ------------------------------------------------------------------ */
 :root {
   --c-page: 251 244 234;       /* #FBF4EA crème — fond de page */
-  --c-surface: 255 252 247;    /* #FFFCF7 blanc chaud — cartes */
-  --c-ink: 59 47 42;           /* #3B2F2A texte courant (11,8:1) */
-  --c-title: 91 42 30;         /* #5B2A1E titres (10,7:1) */
-  --c-muted: 110 95 86;        /* #6E5F56 texte secondaire (5,6:1) */
-  --c-line: 230 216 198;       /* #E6D8C6 bordures */
-  --c-primary: 184 74 47;      /* #B84A2F terracotta — accent, boutons */
-  --c-on-primary: 255 255 255; /* texte sur bouton (5,2:1) */
-  --c-link: 161 63 38;         /* #A13F26 liens (5,9:1) */
-  --c-tag: 225 234 219;        /* #E1EADB fond des étiquettes */
-  --c-tag-ink: 63 91 69;       /* #3F5B45 texte des étiquettes (6,1:1) */
+  --c-surface: 255 251 246;    /* #FFFBF6 blanc chaud — cartes */
+  --c-ink: 37 9 2;             /* #250902 brun très foncé — texte courant (17,2:1) */
+  --c-title: 56 4 14;          /* #38040E bordeaux profond — titres (16,1:1) */
+  --c-muted: 110 74 67;        /* #6E4A43 texte secondaire (7,1:1) */
+  --c-line: 235 217 206;       /* #EBD9CE sable rosé — bordures */
+  --c-primary: 208 0 0;        /* #D00000 rouge vif — accent, boutons, focus (5,2:1) */
+  --c-on-primary: 255 255 255; /* #FFFFFF texte sur bouton rouge (5,7:1) */
+  --c-link: 208 0 0;           /* #D00000 liens (5,2:1 sur page, 5,5:1 sur surface) */
+  --c-tag: 247 227 220;        /* #F7E3DC rose poudré — fond des étiquettes */
+  --c-tag-ink: 126 20 16;      /* #7E1410 texte des étiquettes (8,5:1) */
+  --c-paper: 255 255 255;      /* #FFFFFF fond des schémas */
+
+  /* Grands aplats sombres : pied de page, encadrés, agrandissement */
+  --c-wine: 56 4 14;           /* #38040E bordeaux profond */
+  --c-on-wine: 251 244 234;    /* #FBF4EA texte crème sur bordeaux (16,1:1) */
 
   /* Couleurs décoratives (formes, fonds doux — jamais pour du texte) */
-  --c-peach: 244 183 154;      /* #F4B79A pêche */
-  --c-sage: 169 194 160;       /* #A9C2A0 vert sauge */
+  --c-blush: 242 194 184;      /* #F2C2B8 rose poudré */
+  --c-sand: 233 211 189;       /* #E9D3BD sable */
+  --c-rose: 232 169 162;       /* #E8A9A2 vieux rose */
 
   /* Badges de type de projet (fond / texte) */
-  --c-pro: 249 220 207;
-  --c-pro-ink: 142 53 32;
-  --c-perso: 220 232 214;
-  --c-perso-ink: 63 91 69;
-  --c-cours: 251 227 196;
-  --c-cours-ink: 122 74 18;
+  --c-pro: 252 224 218;        /* #FCE0DA rouge très clair */
+  --c-pro-ink: 156 10 6;       /* #9C0A06 (6,8:1) */
+  --c-perso: 242 228 208;      /* #F2E4D0 sable clair */
+  --c-perso-ink: 94 42 18;     /* #5E2A12 (9,2:1) */
+  --c-cours: 246 220 225;      /* #F6DCE1 rose clair */
+  --c-cours-ink: 122 14 36;    /* #7A0E24 (8,5:1) */
 
   --nav-h: 4rem;
 }
@@ -70,7 +76,7 @@
   }
 
   ::selection {
-    background: rgb(var(--c-peach) / 0.6);
+    background: rgb(var(--c-blush) / 0.7);
     color: rgb(var(--c-ink));
   }
 }
@@ -92,7 +98,7 @@
     @apply border-primary bg-primary text-on-primary;
   }
   .btn-primary:hover {
-    @apply border-link bg-link text-on-primary;
+    @apply border-wine bg-wine text-on-wine;
   }
 
   .btn[aria-disabled='true'] {
@@ -110,13 +116,43 @@
     background-color: rgb(var(--c-surface));
     background-image: repeating-linear-gradient(
       -45deg,
-      rgb(var(--c-peach) / 0.12) 0 12px,
+      rgb(var(--c-blush) / 0.2) 0 12px,
       transparent 12px 24px
     );
   }
 
   .card {
     @apply rounded-3xl border border-line bg-surface;
+  }
+
+  /* Agrandissement d'image (ImageLightbox) */
+  .lightbox {
+    @apply fixed inset-0 m-0 h-[100dvh] max-h-none w-screen max-w-none border-0 bg-transparent p-0;
+  }
+  .lightbox[open] {
+    @apply flex;
+  }
+  .lightbox::backdrop {
+    background: rgb(var(--c-wine));
+  }
+  .lightbox-btn {
+    @apply grid h-11 w-11 place-items-center rounded-full bg-surface text-xl text-title shadow transition-colors;
+  }
+  .lightbox-btn:hover {
+    @apply bg-primary text-on-primary;
+  }
+  /* Sur un aplat bordeaux, le focus rouge manque de contraste (3,1:1) :
+     il passe en crème (16,1:1) */
+  .on-dark :focus-visible,
+  .lightbox :focus-visible {
+    outline-color: rgb(var(--c-on-wine));
+  }
+  .on-dark a,
+  .on-dark .link-like {
+    @apply text-on-wine;
+  }
+  .lightbox-nav {
+    @apply absolute top-1/2 -translate-y-1/2;
   }
 
   /* Texte long : justifié avec césure, seulement sur écrans ≥ 768 px */

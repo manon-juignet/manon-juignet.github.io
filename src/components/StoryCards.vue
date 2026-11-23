@@ -2,7 +2,7 @@
 // « En détail » : un bloc par paragraphe, numéroté.
 defineProps({ items: { type: Array, required: true } })
 
-const accents = ['bg-peach/45', 'bg-sage/45', 'bg-primary/15']
+const accents = ['bg-blush/45', 'bg-sand/45', 'bg-primary/15']
 </script>
 
 <template>
